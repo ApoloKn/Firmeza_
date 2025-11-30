@@ -1,0 +1,8 @@
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.csproj.AssemblyReference.cache
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.AssemblyInfoInputs.cache
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.AssemblyInfo.cs
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.csproj.CoreCompileInputs.cache
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\Berzerk\Documents\Firmeza\Firmeza.Api\obj\Debug\net10.0\Firmeza.Api.MvcApplicationPartsAssemblyInfo.cache

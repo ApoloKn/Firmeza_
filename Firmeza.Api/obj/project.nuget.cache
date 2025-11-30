@@ -1,0 +1,28 @@
+{
+  "version": 2,
+  "dgSpecHash": "SlW3fdcqnvg=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Berzerk\\Documents\\Firmeza\\Firmeza.Api\\Firmeza.Api.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Berzerk\\.nuget\\packages\\automapper\\13.0.1\\automapper.13.0.1.nupkg.sha512",
+    "C:\\Users\\Berzerk\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\12.0.1\\automapper.extensions.microsoft.dependencyinjection.12.0.1.nupkg.sha512",
+    "C:\\Users\\Berzerk\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\6.0.0\\microsoft.extensions.dependencyinjection.abstractions.6.0.0.nupkg.sha512",
+    "C:\\Users\\Berzerk\\.nuget\\packages\\microsoft.extensions.options\\6.0.0\\microsoft.extensions.options.6.0.0.nupkg.sha512",
+    "C:\\Users\\Berzerk\\.nuget\\packages\\microsoft.extensions.primitives\\6.0.0\\microsoft.extensions.primitives.6.0.0.nupkg.sha512",
+    "C:\\Users\\Berzerk\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512"
+  ],
+  "logs": [
+    {
+      "code": "NU1608",
+      "level": "Warning",
+      "message": "Se detectó una versión del paquete fuera de la restricción de dependencia: AutoMapper.Extensions.Microsoft.DependencyInjection 12.0.1 requiere AutoMapper (= 12.0.1), pero la versión AutoMapper 13.0.1 ya se resolvió.",
+      "projectPath": "C:\\Users\\Berzerk\\Documents\\Firmeza\\Firmeza.Api\\Firmeza.Api.csproj",
+      "warningLevel": 1,
+      "filePath": "C:\\Users\\Berzerk\\Documents\\Firmeza\\Firmeza.Api\\Firmeza.Api.csproj",
+      "libraryId": "AutoMapper",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
+}

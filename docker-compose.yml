@@ -1,0 +1,106 @@
+version: '3.8'
+
+services:
+  # PostgreSQL Database
+  db:
+    image: postgres:15-alpine
+    container_name: firmeza-postgres
+    environment:
+      POSTGRES_DB: FirmezaDb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: your_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - firmeza-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Test Service - Runs First and Must Pass
+  tests:
+    build:
+      context: .
+      dockerfile: Firmeza.Tests/Dockerfile
+    container_name: firmeza-tests
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Database=FirmezaDb;Username=postgres;Password=your_password"
+    networks:
+      - firmeza-network
+
+  # API Service - Runs Only if Tests Pass
+  api:
+    build:
+      context: .
+      dockerfile: Firmeza.Api/Dockerfile
+    container_name: firmeza-api
+    depends_on:
+      tests:
+        condition: service_completed_successfully
+      db:
+        condition: service_healthy
+    ports:
+      - "5000:5000"
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Database=FirmezaDb;Username=postgres;Password=your_password"
+      ASPNETCORE_URLS: "http://+:5000"
+      ASPNETCORE_ENVIRONMENT: "Production"
+      Jwt__Key: "YourSuperSecretKeyForJWTTokenGenerationShouldBeAtLeast32CharactersLong"
+      Jwt__Issuer: "FirmezaApi"
+      Jwt__Audience: "FirmezaClient"
+      Jwt__ExpiresInMinutes: "60"
+    networks:
+      - firmeza-network
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+  # Admin Web Service - Runs After API is Healthy
+  web:
+    build:
+      context: .
+      dockerfile: Firmeza.Web/Dockerfile
+    container_name: firmeza-web
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "5001:5001"
+    environment:
+      ConnectionStrings__DefaultConnection: "Host=db;Database=FirmezaDb;Username=postgres;Password=your_password"
+      ASPNETCORE_URLS: "http://+:5001"
+      ASPNETCORE_ENVIRONMENT: "Production"
+    networks:
+      - firmeza-network
+
+  # Client Service - Runs After API is Healthy
+  client:
+    build:
+      context: ./Firmeza.Client
+      dockerfile: Dockerfile
+    container_name: firmeza-client
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "3000:80"
+    networks:
+      - firmeza-network
+
+networks:
+  firmeza-network:
+    driver: bridge
+
+volumes:
+  postgres_data:
+    driver: local

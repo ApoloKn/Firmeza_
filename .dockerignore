@@ -1,0 +1,77 @@
+# .NET Build artifacts
+**/bin/
+**/obj/
+**/out/
+**/.vs/
+**/.vscode/
+
+# Node modules
+**/node_modules/
+**/npm-debug.log
+**/yarn-error.log
+
+# Test results
+**/TestResults/
+**/*.trx
+**/*.xml
+
+# User-specific files
+**/*.user
+**/*.suo
+**/*.userosscache
+**/*.sln.docstates
+
+# Build results
+**/[Dd]ebug/
+**/[Dd]ebugPublic/
+**/[Rr]elease/
+**/[Rr]eleases/
+**/x64/
+**/x86/
+**/build/
+**/bld/
+**/[Bb]in/
+**/[Oo]bj/
+
+# Visual Studio cache/options directory
+**/.vs/
+
+# Git
+**/.git/
+**/.gitignore
+**/.gitattributes
+
+# Docker
+**/.dockerignore
+**/docker-compose*.yml
+**/Dockerfile*
+
+# IDE
+**/.idea/
+**/.vscode/
+**/*.swp
+**/*.swo
+*~
+
+# OS
+**/.DS_Store
+**/Thumbs.db
+
+# Logs
+**/*.log
+**/logs/
+
+# Database
+**/*.db
+**/*.db-shm
+**/*.db-wal
+
+# Secrets
+**/*.pfx
+**/*.p12
+**/appsettings.*.json
+!**/appsettings.Docker.json
+
+# Client dist
+**/dist/
+**/build/

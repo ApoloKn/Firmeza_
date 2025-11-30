@@ -1,0 +1,58 @@
+@page
+@model Firmeza.Web.Pages.Sales.DetailsModel
+@{
+    ViewData["Title"] = "Sale Details";
+}
+
+<h1>Sale Details</h1>
+
+<div>
+    <h4>Sale</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sale.SaleDate)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sale.SaleDate)
+        </dd>
+        <dt class="col-sm-2">
+            Customer
+        </dt>
+        <dd class="col-sm-10">
+            @Model.Sale.Customer?.FirstName @Model.Sale.Customer?.LastName
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Sale.Total)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Sale.Total)
+        </dd>
+    </dl>
+</div>
+
+<h4>Items</h4>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Product</th>
+            <th>Quantity</th>
+            <th>Unit Price</th>
+            <th>SubTotal</th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Sale.SaleDetails) {
+        <tr>
+            <td>@item.Product?.Name</td>
+            <td>@item.Quantity</td>
+            <td>@item.UnitPrice</td>
+            <td>@item.SubTotal</td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="./Index" class="btn btn-secondary">Back to List</a>
+</div>
